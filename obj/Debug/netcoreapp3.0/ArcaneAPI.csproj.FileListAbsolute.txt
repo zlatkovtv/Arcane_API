@@ -1,0 +1,6 @@
+C:\Users\Memphis\Desktop\Projects\ArcaneAPI\obj\Debug\netcoreapp3.0\ArcaneAPI.csprojAssemblyReference.cache
+C:\Users\Memphis\Desktop\Projects\ArcaneAPI\obj\Debug\netcoreapp3.0\staticwebassets\ArcaneAPI.StaticWebAssets.Manifest.cache
+C:\Users\Memphis\Desktop\Projects\ArcaneAPI\obj\Debug\netcoreapp3.0\staticwebassets\ArcaneAPI.StaticWebAssets.xml
+C:\Users\Memphis\Desktop\Projects\ArcaneAPI\obj\Debug\netcoreapp3.0\ArcaneAPI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Memphis\Desktop\Projects\ArcaneAPI\obj\Debug\netcoreapp3.0\ArcaneAPI.AssemblyInfoInputs.cache
+C:\Users\Memphis\Desktop\Projects\ArcaneAPI\obj\Debug\netcoreapp3.0\ArcaneAPI.AssemblyInfo.cs

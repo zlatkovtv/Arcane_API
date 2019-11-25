@@ -1,0 +1,16 @@
+C:\Users\Memphis\Desktop\Projects\ArcaneAPI\bin\Debug\netcoreapp2.2\appsettings.Development.json
+C:\Users\Memphis\Desktop\Projects\ArcaneAPI\bin\Debug\netcoreapp2.2\appsettings.json
+C:\Users\Memphis\Desktop\Projects\ArcaneAPI\bin\Debug\netcoreapp2.2\Properties\launchSettings.json
+C:\Users\Memphis\Desktop\Projects\ArcaneAPI\bin\Debug\netcoreapp2.2\ArcaneAPI.deps.json
+C:\Users\Memphis\Desktop\Projects\ArcaneAPI\bin\Debug\netcoreapp2.2\ArcaneAPI.runtimeconfig.json
+C:\Users\Memphis\Desktop\Projects\ArcaneAPI\bin\Debug\netcoreapp2.2\ArcaneAPI.runtimeconfig.dev.json
+C:\Users\Memphis\Desktop\Projects\ArcaneAPI\bin\Debug\netcoreapp2.2\ArcaneAPI.dll
+C:\Users\Memphis\Desktop\Projects\ArcaneAPI\bin\Debug\netcoreapp2.2\ArcaneAPI.pdb
+C:\Users\Memphis\Desktop\Projects\ArcaneAPI\obj\Debug\netcoreapp2.2\ArcaneAPI.csprojAssemblyReference.cache
+C:\Users\Memphis\Desktop\Projects\ArcaneAPI\obj\Debug\netcoreapp2.2\ArcaneAPI.RazorAssemblyInfo.cache
+C:\Users\Memphis\Desktop\Projects\ArcaneAPI\obj\Debug\netcoreapp2.2\ArcaneAPI.RazorAssemblyInfo.cs
+C:\Users\Memphis\Desktop\Projects\ArcaneAPI\obj\Debug\netcoreapp2.2\ArcaneAPI.AssemblyInfoInputs.cache
+C:\Users\Memphis\Desktop\Projects\ArcaneAPI\obj\Debug\netcoreapp2.2\ArcaneAPI.AssemblyInfo.cs
+C:\Users\Memphis\Desktop\Projects\ArcaneAPI\obj\Debug\netcoreapp2.2\ArcaneAPI.RazorTargetAssemblyInfo.cache
+C:\Users\Memphis\Desktop\Projects\ArcaneAPI\obj\Debug\netcoreapp2.2\ArcaneAPI.dll
+C:\Users\Memphis\Desktop\Projects\ArcaneAPI\obj\Debug\netcoreapp2.2\ArcaneAPI.pdb
