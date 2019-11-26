@@ -1,20 +1,24 @@
 using System.Data;
-using Microsoft.Extensions.Configuration;
 using Dapper;
 using System.Collections.Generic;
-using System;
-using System.Text;
 using Microsoft.Extensions.Options;
 using System.Threading.Tasks;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using Newtonsoft.Json;
 
 public sealed class NewsRepository : ExternalApiRepository, INewsRepository
 {
-    public NewsRepository(IOptions<AppSettings> appSettings): base(appSettings)
-    {
+    private readonly IDatabaseRepository dbContext;
 
+    public NewsRepository(IOptions<AppSettings> appSettings, IDatabaseRepository dbContext): base(appSettings)
+    {
+        this.dbContext = dbContext;
+    }
+
+    public async Task<IEnumerable<NewsAction>> AddToFavourites(NewsAction newsAction)
+    {
+         using (IDbConnection connection = this.dbContext.GetConnection()) {
+            connection.Open();
+            return await connection.QueryAsync<NewsAction>("INSERT INTO NEWS_FAVOURITES WHERE USERID = @UserId", new { UserId = newsAction.UserId });
+        }
     }
 
     public override string GetApiUrl()
@@ -27,4 +31,6 @@ public sealed class NewsRepository : ExternalApiRepository, INewsRepository
         var url = string.Format(GetApiUrl(), country, appSettings.NewsApiKey);
         return await base.GetFromUrlAsync(url);
     }
+
+    
 }

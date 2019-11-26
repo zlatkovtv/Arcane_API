@@ -26,5 +26,7 @@ public sealed class WeatherRepository : ExternalApiRepository, IWeatherRepositor
     {
         var url = string.Format(GetApiUrl(), city, country, appSettings.WeatherApiKey);
         return await base.GetFromUrlAsync(url);
+        // Weather weather = new Weather(result);
+        // return weather;
     }
 }

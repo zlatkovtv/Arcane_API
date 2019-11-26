@@ -29,5 +29,15 @@ namespace ArcaneApi.Controllers
 
             return Ok(result);
         }
+
+        [HttpPost]
+        public async Task<ActionResult> AddToFavourites(NewsAction newsAction) {
+            var result = await repo.AddToFavourites(newsAction);
+            if(result == null) {
+                return StatusCode(500);
+            }
+
+            return Ok(result);
+        }
     }
 }
