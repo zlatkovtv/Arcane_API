@@ -14,7 +14,7 @@ public sealed class TodoRepository: CrudRepository<Todo>, ITodoRepository
     {
         using (IDbConnection connection = this.dbContext.GetConnection()) {
             connection.Open();
-            return await connection.QueryAsync<Todo>("SELECT * FROM TODO WHERE OWNERID = @OwnerId", new { OwnerId = userId });
+            return await connection.QueryAsync<Todo>("SELECT * FROM TODO WHERE USERID = @UserId", new { UserId = userId });
         }
     }
     
@@ -27,7 +27,7 @@ public sealed class TodoRepository: CrudRepository<Todo>, ITodoRepository
     {
         using (IDbConnection connection = this.dbContext.GetConnection()) {
             connection.Open();
-            return connection.Execute("INSERT TODO([Description], [IsChecked]) values(@Description, @IsChecked)", new { Description = todo.Description, IsChecked = todo.IsChecked });
+            return connection.Execute("INSERT TODO([Description], [UserId]) values(@Description, @UserId)", new { Description = todo.Description, UserId = todo.UserId });
         }
     }
 
@@ -39,11 +39,19 @@ public sealed class TodoRepository: CrudRepository<Todo>, ITodoRepository
         }
     }
 
+    public int DeleteByDesc(Todo todo)
+    {
+        using (IDbConnection connection = this.dbContext.GetConnection()) {
+            connection.Open();
+            return connection.Execute("DELETE FROM TODO WHERE DESCRIPTION like @Desc AND USERID = @UserId", new { Desc = todo.Description, UserId = todo.UserId });
+        }
+    }
+
     public override int Update(Todo todo)
     {
         using (IDbConnection connection = this.dbContext.GetConnection()) {
             connection.Open();
-            return connection.Execute("UPDATE TODO SET DESCRIPTION=@Description, ISCHECKED = @IsChecked, USERID = @UserId WHERE ID = @Id", new { Id = todo.Id, Description = todo.Description, IsChecked = todo.IsChecked, UserId = todo.Owner.Id });
+            return connection.Execute("UPDATE TODO SET DESCRIPTION=@Description, USERID = @UserId WHERE ID = @Id", new { Id = todo.Id, Description = todo.Description, UserId = todo.UserId });
         }
     }
 }

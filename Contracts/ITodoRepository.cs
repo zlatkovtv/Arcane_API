@@ -4,4 +4,5 @@ using System.Threading.Tasks;
 public interface ITodoRepository: ICrudRepository<Todo>
 {
     Task<IEnumerable<Todo>> GetAll(int? id);
+    int DeleteByDesc(Todo todo);
 }

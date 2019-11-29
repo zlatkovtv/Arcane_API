@@ -9,7 +9,7 @@ using static Microsoft.AspNetCore.Http.StatusCodes;
 
 namespace ArcaneApi.Controllers
 {
-    [Authorize]
+    // [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class TodoController : ControllerBase
@@ -28,10 +28,6 @@ namespace ArcaneApi.Controllers
             }
 
             var result = await repo.GetAll(userId);
-            if(!result.Any()) {
-                return NotFound(userId);
-            }
-
             return Ok(result);
         }
 
@@ -39,7 +35,11 @@ namespace ArcaneApi.Controllers
         [HttpPost]
         public ActionResult Post([FromBody] Todo todo)
         {
-            this.repo.Add(todo);
+            var res = this.repo.Add(todo);
+            if(res < 0) {
+                return StatusCode(Status500InternalServerError);
+            }
+            
             return StatusCode(Status201Created);
         }
 
@@ -55,16 +55,13 @@ namespace ArcaneApi.Controllers
             return Ok();
         }
 
-        [HttpDelete("{id}")]
-        public ActionResult Delete(int id)
+        [ValidateModelAttribute]
+        [HttpDelete]
+        public ActionResult Delete([FromBody]Todo todo)
         {
-            if(id <= 0) {
-                return BadRequest();
-            }
-
-            var rowsAffected = this.repo.Delete(id);
+            var rowsAffected = this.repo.DeleteByDesc(todo);
             if(rowsAffected == 0) {
-                return NotFound(id);
+                return NotFound("Todo does not exist.");
             }
 
             return Ok();
