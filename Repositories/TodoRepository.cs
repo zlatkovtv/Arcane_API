@@ -43,7 +43,7 @@ public sealed class TodoRepository: CrudRepository<Todo>, ITodoRepository
     {
         using (IDbConnection connection = this.dbContext.GetConnection()) {
             connection.Open();
-            return connection.Execute("DELETE FROM TODO WHERE DESCRIPTION like @Desc AND USERID = @UserId", new { Desc = todo.Description, UserId = todo.UserId });
+            return connection.Execute("DELETE TOP (1) FROM TODO WHERE DESCRIPTION like @Desc AND USERID = @UserId", new { Desc = todo.Description, UserId = todo.UserId });
         }
     }
 
