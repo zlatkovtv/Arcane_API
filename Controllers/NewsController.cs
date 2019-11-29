@@ -19,12 +19,23 @@ namespace ArcaneApi.Controllers
             repo = repository;
         }
 
-        [HttpGet("{country?}")]
-        public async Task<ActionResult> Get(string country = "us")
+        [HttpGet("{source?}")]
+        public async Task<ActionResult> Get(string source)
         {
-            var result = await repo.GetNewsInfo(country);
+            var result = await repo.GetNewsInfo(source);
             if(result == null) {
                 return NotFound($"No news data.");
+            }
+
+            return Ok(result);
+        }
+
+        [HttpGet("sources")]
+        public async Task<ActionResult> GetSources()
+        {
+            var result = await repo.GetNewsSources();
+            if(result == null) {
+                return NotFound($"No news sources.");
             }
 
             return Ok(result);

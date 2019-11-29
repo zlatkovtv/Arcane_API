@@ -28,7 +28,7 @@ namespace ArcaneApi.Controllers
 
             var result = await repo.GetForecastForCity(city, country);
             if(result == null) {
-                return NotFound($"{city}, {country}");
+                return NotFound($"Weather for {city}, {country} not found.");
             }
 
             return Ok(result);
