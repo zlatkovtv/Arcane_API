@@ -75,6 +75,11 @@ namespace ArcaneApi
             services.AddSingleton<ICryptoRepository, CryptoRepository>();
             services.AddSingleton<INewsRepository, NewsRepository>();
             services.AddRazorPages();
+            services.AddRouting();
+            services.AddControllersWithViews();
+            services.AddMvc()
+                    .AddNewtonsoftJson()
+                    .AddMvcOptions( options => options.EnableEndpointRouting = false);
             services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
             {
                 builder.AllowAnyOrigin()
@@ -86,8 +91,8 @@ namespace ArcaneApi
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
+            if (env.EnvironmentName == "Development")
+{
                 app.UseDeveloperExceptionPage();
             }
             else
@@ -97,11 +102,15 @@ namespace ArcaneApi
 
             app.ConfigureExceptionHandler();
             // app.UseHttpsRedirection();
-            app.UseAuthentication();
             app.UseCors("MyPolicy");
             app.UseRouting();
+            app.UseAuthentication();
             app.UseAuthorization();
             app.UseEndpoints(endpoints => {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}"
+                );
                 endpoints.MapRazorPages();
             });
         }
